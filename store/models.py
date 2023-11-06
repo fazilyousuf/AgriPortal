@@ -10,10 +10,11 @@ class User(models.Model):
     name = models.CharField(max_length=50)
 
 class Product(models.Model):
+    id = models.AutoField(primary_key=True)
     name =  models.CharField(max_length=50, null=True)
     price = models.CharField(max_length=20, null=True)
     quantity = models.CharField(max_length=20, null=True)
     category = models.CharField(max_length=15, null=True)
     production_date = models.CharField(max_length=15, null=True)
     image = models.ImageField(upload_to ='media/')
-    
+    manufacturer = models.CharField(max_length=30, null=True)

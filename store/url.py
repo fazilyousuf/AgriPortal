@@ -23,9 +23,11 @@ urlpatterns = [
     path('',views.index,name="home"),
     path('home_cons',views.home_cons,name="home_cons"),
     path('home_farmer',views.home_farmer,name="home_farmer"),
+    path('add_products',views.farmer_add,name="add_products"),
     path('signup_login',views.signup_login,name="signup_login"),
     path('shop',views.shop,name="shop"),
     path('login',views.login,name="login"),
     path('signup',views.signup,name="signup"),
     path('logout',views.logout,name="logout"),
+    path('delete_item/<id>',views.deleteitem,name="delete_item"),
 ]

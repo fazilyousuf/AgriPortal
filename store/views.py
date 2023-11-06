@@ -29,19 +29,33 @@ def home_cons(request):
     return HttpResponse("Please Login first")
 
 def home_farmer(request):
+    if checkLogin(request):
+        product = Product.objects.filter(manufacturer = request.session["email"])
+        user = User.objects.filter(email = request.session['email'])
+        data = {'products' : product, 'user' : user[0]}
+        return render(request,'farmer/home/index.html', data)
+    return HttpResponse("Please Login first")
+
+def farmer_add(request):
     if request.method == "POST":
-        product_name = request.POST['product_name']
-        product_price = request.POST['product_price']
+        product_name = request.POST.get('product_name')
+        product_price = request.POST.get('product_price')
         product_image = request.FILES.get('product-image')
-        print(product_image)
-        product_quantity = request.POST['product_quantity']
-        product_category = request.POST['category']
-        product_date = request.POST['man-date']
-        new_product = Product.objects.create(name=product_name, price=product_price, image=product_image, quantity=product_quantity, category = product_category, production_date = product_date)
+        product_quantity = request.POST.get('product_quantity')
+        product_category = request.POST.get('category')
+        product_date = request.POST.get('man-date')
+        manufacturer = request.session["email"]
+        new_product = Product.objects.create(name=product_name, price=product_price, image=product_image, quantity=product_quantity, category = product_category, production_date = product_date, manufacturer = manufacturer)
         new_product.save()
     if checkLogin(request):
-        return render(request,'home_farmer.html')
+        return render(request,'farmer/home/add_product.html')
     return HttpResponse("Please Login first")
+
+def deleteitem(request, id):
+    item = Product.objects.filter(id = id)
+    if item:
+        item.delete()
+    return redirect('home_farmer')
 
 def signup_login(request):
     return render(request,'signup_login.html')
