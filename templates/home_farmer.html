@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>farmer home_page</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href=" {% static 'home_cons/images/favicon.ico' %} " type="image/x-icon">
+    <link rel="apple-touch-icon" href=" {% static 'home_cons/images/apple-touch-icon.png' %} ">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href=" {% static 'home_cons/css/bootstrap.min.css' %} ">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href=" {% static 'home_cons/css/style.css' %} ">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href=" {% static 'home_cons/css/responsive.css' %} ">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href=" {% static 'home_cons/css/custom.css' %} ">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<html>
+<head>
+    <title>Add Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            width: 50%;
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+        }
+
+        label, input, button {
+            display: block;
+            margin: 10px 0;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                    <!-- <a class="navbar-brand" href=" {% static 'index.html' %} "><img src=" {% static 'home_cons/images/logo.png' %} " class="logo" alt=""></a> -->
+                </div>
+                <!-- End Header Navigation -->
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="nav-item active"><a class="nav-link" href=" {% static 'index.html' %} ">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href=" {% static 'about.html' %} ">About Us</a></li>
+                        <!--<li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+                            <ul class="dropdown-menu">
+								<li><a href=" {% static 'shop.html' %} ">Sidebar Shop</a></li>
+								<li><a href=" {% static 'shop-detail.html' %} ">Shop Detail</a></li>
+                                <li><a href=" {% static 'cart.html' %} ">Cart</a></li>
+                                <li><a href=" {% static 'checkout.html' %} ">Checkout</a></li>
+                                <li><a href=" {% static 'my-account.html' %} ">My Account</a></li>
+                                <li><a href=" {% static 'wishlist.html' %} ">Wishlist</a></li>
+                            </ul>
+                        </li>-->
+                        <li class="nav-item"><a class="nav-link" href=" {% static 'gallery.html' %} ">.......</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" href=" {% static 'contact-us.html' %} ">Contact Us</a></li> -->
+                        <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+        </nav>
+    <h1>Add Product</h1>
+
+    <form id="product-form" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="product-name">Product Name:</label>
+        <input type="text" id="product-name" name="product_name" required>
+
+        <label for="product-price">Price:</label>
+        <input type="number" id="product-price" name="product_price" required>
+
+        <label for="product-quantity">Quantity:</label>
+        <input type="number" id="product-quantity" name="product_quantity" required>
+
+        <label for="category">Category:</label>
+        <select name="category" id="category">
+            <option value="Fruits">Fruits</option>
+            <option value="Vegetables">Vegetables</option>
+            <option value="Grains">Grains</option>
+            <option value="Others">Others</option>
+        </select>
+
+        <label for="man-date">Production Date:</label>
+        <input type="date" id="man-date" name="man-date" required>
+
+        <label for="product-image">Product Image:</label>
+        <input type="file" id="product-image" name="product-image" accept="image/*" required>
+
+        <button type="submit">Add Product</button>
+    </form>
+    <div class="footer-copyright">
+        <p class="footer-company">All Rights Reserved. &copy; 2023 <a href="#">Agriportal</a> Design By :
+    </div>
+    <!-- End copyright  -->
+
+    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+</body>
+</html>
