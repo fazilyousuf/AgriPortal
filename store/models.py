@@ -18,3 +18,8 @@ class Product(models.Model):
     production_date = models.CharField(max_length=15, null=True)
     image = models.ImageField(upload_to ='media/')
     manufacturer = models.CharField(max_length=30, null=True)
+
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField()

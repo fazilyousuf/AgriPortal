@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import User
+from .models import User, Cart
 from store.models import Product
 from time import time
 from django.core.files.storage import FileSystemStorage
@@ -37,6 +37,8 @@ def home_farmer(request):
     return HttpResponse("Please Login first")
 
 def farmer_add(request):
+    user = User.objects.filter(email = request.session['email'])
+    data = {'user' : user[0]}
     if request.method == "POST":
         product_name = request.POST.get('product_name')
         product_price = request.POST.get('product_price')
@@ -48,7 +50,7 @@ def farmer_add(request):
         new_product = Product.objects.create(name=product_name, price=product_price, image=product_image, quantity=product_quantity, category = product_category, production_date = product_date, manufacturer = manufacturer)
         new_product.save()
     if checkLogin(request):
-        return render(request,'farmer/home/add_product.html')
+        return render(request,'farmer/home/add_product.html',data)
     return HttpResponse("Please Login first")
 
 def deleteitem(request, id):
@@ -62,9 +64,17 @@ def signup_login(request):
 
 def shop(request):
     products = Product.objects.all()
-    print(products[0].image)
+    print(type(products))
     data = {'products' : products}
     return render(request,'shop.html', data)
+
+def addToCart(request):
+    items = request.POST.getlist("items")
+    for i in items:
+        item, quantity = i.split(',')[0], i.split(',')[1]
+        cart = Cart(user = User.objects.filter(email = request.session['email'])[0], product = Product.objects.filter(id = item)[0], quantity = int(quantity))
+        cart.save()
+    return HttpResponse("Cart Saved")
 
 def signup(request):
     email = request.POST['email']
@@ -82,6 +92,8 @@ def signup(request):
 def login(request):
     email = request.POST['loginmail']
     passwd = request.POST['loginpass']
+    if email == "admin@gmail.com" and passwd == "admin":
+        return redirect("/admin")
     user = User.objects.filter(email = email)
     if user:
         if User.objects.filter(email = email, passwd = passwd):

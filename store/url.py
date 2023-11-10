@@ -30,4 +30,6 @@ urlpatterns = [
     path('signup',views.signup,name="signup"),
     path('logout',views.logout,name="logout"),
     path('delete_item/<id>',views.deleteitem,name="delete_item"),
+    path('add-to-cart',views.addToCart,name="add-to-cart"),
+    
 ]

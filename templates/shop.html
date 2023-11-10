@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <!-- Basic -->
@@ -40,7 +41,7 @@
 </head>
 
 <body>
-    
+
 
     <!-- Start Main Top -->
     <header class="main-header">
@@ -53,7 +54,7 @@
                         aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fa fa-bars"></i>
                     </button>
-                   <!-- <a class="navbar-brand" href=" {% static 'home_cons/index.html' %} "><img
+                    <!-- <a class="navbar-brand" href=" {% static 'home_cons/index.html' %} "><img
                             src=" {% static 'home_cons/images/logo.png' %} " class="logo" alt=""></a>-->
                 </div>
                 <!-- End Header Navigation -->
@@ -63,8 +64,9 @@
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class="nav-item"><a class="nav-link" href=" {% url 'home_cons' %} ">Home</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href=" {% static 'home_cons/about.html' %} ">About
-                                Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href=" {% static 'home_cons/about.html' %} ">View
+                                Orders
+                            </a></li>
                         <li class="dropdown active">
                             <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
                             <ul class="dropdown-menu">
@@ -76,10 +78,10 @@
                                 <li><a href=" {% static 'home_cons/wishlist.html' %} ">Wishlist</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link"
+                        <!--<li class="nav-item"><a class="nav-link"
                                 href=" {% static 'home_cons/gallery.html' %} ">Gallery</a></li>
                         <li class="nav-item"><a class="nav-link"
-                                href=" {% static 'home_cons/contact-us.html' %} ">Contact Us</a></li>
+                                href=" {% static 'home_cons/contact-us.html' %} ">Contact Us</a></li>-->
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -90,8 +92,8 @@
                         <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
                         <li class="side-menu"><a href="#">
                                 <i class="fa fa-shopping-bag"></i>
-                                <span class="badge">3</span>
-                                <p>My Cart</p>
+                                <span class="badge" id="badgecount"></span>
+                                <p>My Bag</p>
                             </a></li>
                     </ul>
                 </div>
@@ -101,28 +103,10 @@
             <div class="side">
                 <a href="#" class="close-side"><i class="fa fa-times"></i></a>
                 <li class="cart-box">
-                    <ul class="cart-list">
-                        <li>
-                            <a href="#" class="photo"><img src=" {% static 'home_cons/images/img-pro-01.jpg' %} "
-                                    class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Delica omtantur </a></h6>
-                            <p>1x - <span class="price">$80.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src=" {% static 'home_cons/images/img-pro-02.jpg' %} "
-                                    class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Omnes ocurreret</a></h6>
-                            <p>1x - <span class="price">$60.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src=" {% static 'home_cons/images/img-pro-03.jpg' %} "
-                                    class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Agam facilisis</a></h6>
-                            <p>1x - <span class="price">$40.00</span></p>
-                        </li>
+                    <ul class="cart-list" id="cart-item">
                         <li class="total">
-                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                            <span class="float-right"><strong>Total</strong>: $180.00</span>
+                            <a href="javascript:addToCart()" class="btn btn-default hvr-hover btn-cart">ADD TO CART</a>
+                            <span class="float-right"><strong>Total : </strong><span id="totalamt"></span></span>
                         </li>
                     </ul>
                 </li>
@@ -180,7 +164,7 @@
                                         <option value="4">Best Selling</option>
                                     </select>
                                 </div>
-                                <p>Showing all  results</p>
+                                <p>Showing all results</p>
                             </div>
                         </div>
                         <div class="product-categorie-box">
@@ -195,20 +179,18 @@
                                                     <div class="mask-icon">
                                                         <ul>
                                                             <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="View"><i class="fas fa-eye"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Compare"><i class="fas fa-sync-alt"></i></a>
-                                                            </li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
                                                                     title="Add to Wishlist"><i
                                                                         class="far fa-heart"></i></a></li>
                                                         </ul>
-                                                        <a class="cart" href="#">Add to Cart</a>
+                                                        <a class="cart"
+                                                            href="javascript:addItem({{ prod.id }}, '{{ prod.name }}', {{ prod.price }}, 'media/{{ prod.image }}')">Add
+                                                            to
+                                                            Cart</a>
                                                     </div>
                                                 </div>
                                                 <div class="why-text">
                                                     <h4>{{ prod.name }}</h4>
-                                                    <h5> $ {{ prod.price }}</h5>
+                                                    <h5> ₹ {{ prod.price }}</h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -230,7 +212,7 @@
                                 <button type="submit"> <i class="fa fa-search"></i> </button>
                             </form>
                         </div>
-                        <div class="filter-sidebar-left">
+                        <!--<div class="filter-sidebar-left">
                             <div class="title-left">
                                 <h3>Categories</h3>
                             </div>
@@ -292,7 +274,7 @@
                                     <button class="btn hvr-hover" type="submit">Filter</button>
                                 </p>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>
@@ -492,6 +474,81 @@
 
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
+    <form action="/add-to-cart" method="post" id="submitCart">
+        {% csrf_token %}
+    </form>
+
+    <script>
+
+        var mydata = []
+        total = 0
+        badgeCount = 0
+        document.getElementById("badgecount").innerHTML = badgeCount;
+        const frm = document.getElementById("submitCart");
+
+        function addItem(id, name, price, image) {
+            total += price;
+            document.getElementById("totalamt").innerHTML = total;
+
+            if (mydata.includes(id)) {
+                document.getElementById(id).innerHTML = Number(document.getElementById(id).innerHTML) + 1;
+                vlr = document.getElementById(`frm${id}`).value
+                cnt = vlr.split(',')
+                document.getElementById(`frm${id}`).value = `${cnt[0]},${Number(cnt[1]) + 1}`;
+                console.log(document.getElementById(`frm${id}`).value)
+            } else {
+                badgeCount++;
+                document.getElementById("badgecount").innerHTML = badgeCount;
+                const list = document.getElementById("cart-item");
+                list.innerHTML += `<li id="total${id}">
+                            <a href="#" class="photo"><img src="${image}"
+                                    class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">${name}</a></h6>
+                            <p><span id = "${id}">1</span> - <span class="price">${price}</span></p>
+                            <a href="javascript:plusClicked(${id}, ${price})"><i class="fa-solid fa-plus" style= "margin-right : 10px"></i></a>
+                            <a href="javascript:minusClicked(${id}, ${price})"><i class="fa-solid fa-minus" style = "margin-left : 10px"></i></a>
+                        </li>`
+                frm.innerHTML += `<input type="hidden" name="items" id="frm${id}" value="${id},1">`
+                mydata.push(id);
+            }
+        }
+    </script>
+    <script>
+        function minusClicked(id, price) {
+            total -= price;
+            document.getElementById("totalamt").innerHTML = total;
+            if (document.getElementById(id).innerHTML == '1') {
+                badgeCount--;
+                document.getElementById("badgecount").innerHTML = badgeCount;
+                document.getElementById(`total${id}`).remove();
+                document.getElementById(`frm${id}`).remove();
+                mydata = mydata.filter(function (value) {
+                    return value !== id;
+                });
+            } else {
+                document.getElementById(id).innerHTML = Number(document.getElementById(id).innerHTML) - 1;
+                vlr = document.getElementById(`frm${id}`).value
+                cnt = vlr.split(',')
+                document.getElementById(`frm${id}`).value = `${cnt[0]},${Number(cnt[1]) - 1}`;
+                console.log(document.getElementById(`frm${id}`).value)
+            }
+        }
+
+        function plusClicked(id, price) {
+            total += price;
+            document.getElementById("totalamt").innerHTML = total;
+            document.getElementById(id).innerHTML = Number(document.getElementById(id).innerHTML) + 1;
+            vlr = document.getElementById(`frm${id}`).value
+            cnt = vlr.split(',')
+            document.getElementById(`frm${id}`).value = `${cnt[0]},${Number(cnt[1]) + 1}`;
+            console.log(document.getElementById(`frm${id}`).value)
+        }
+    </script>
+    <script>
+        function addToCart() {
+            frm.submit();
+        }
+    </script>
     <!-- ALL JS FILES -->
     <script src=" {% static 'home_cons/js/jquery-3.2.1.min.js' %} "></script>
     <script src=" {% static 'home_cons/js/popper.min.js' %} "></script>
