@@ -31,5 +31,8 @@ urlpatterns = [
     path('logout',views.logout,name="logout"),
     path('delete_item/<id>',views.deleteitem,name="delete_item"),
     path('add-to-cart',views.addToCart,name="add-to-cart"),
-    
+    path('cart',views.viewCart,name="cart"),
+    path('update-cart', views.updatecart, name="update-cart"),
+    path('place-order', views.placeOrder, name="place-order"),
+    path('remove-item', views.removeItem, name="remove-item"),
 ]

@@ -2,373 +2,438 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<!-- Basic -->
+  <!-- Basic -->
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Site Metas -->
     <title>shop</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href=" {% static 'home_cons/images/favicon.ico' %} " type="image/x-icon">
-    <link rel="apple-touch-icon" href=" {% static 'home_cons/images/apple-touch-icon.png' %} ">
+    <link
+      rel="shortcut icon"
+      href=" {% static 'home_cons/images/favicon.ico' %} "
+      type="image/x-icon"
+    />
+    <link
+      rel="apple-touch-icon"
+      href=" {% static 'home_cons/images/apple-touch-icon.png' %} "
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href=" {% static 'home_cons/css/bootstrap.min.css' %} ">
+    <link
+      rel="stylesheet"
+      href=" {% static 'home_cons/css/bootstrap.min.css' %} "
+    />
     <!-- Site CSS -->
-    <link rel="stylesheet" href=" {% static 'home_cons/css/style.css' %} ">
+    <link rel="stylesheet" href=" {% static 'home_cons/css/style.css' %} " />
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href=" {% static 'home_cons/css/responsive.css' %} ">
+    <link
+      rel="stylesheet"
+      href=" {% static 'home_cons/css/responsive.css' %} "
+    />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href=" {% static 'home_cons/css/custom.css' %} ">
+    <link rel="stylesheet" href=" {% static 'home_cons/css/custom.css' %} " />
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+  </head>
 
-</head>
-
-<body>
-
-
+  <body>
     <!-- Start Main Top -->
     <header class="main-header">
-        <!-- Start Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
-            <div class="container">
-                <!-- Start Header Navigation -->
-                <div class="navbar-header">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
-                        aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <!-- <a class="navbar-brand" href=" {% static 'home_cons/index.html' %} "><img
+      <!-- Start Navigation -->
+      <nav
+        class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav"
+      >
+        <div class="container">
+          <!-- Start Header Navigation -->
+          <div class="navbar-header">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbar-menu"
+              aria-controls="navbars-rs-food"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <i class="fa fa-bars"></i>
+            </button>
+            <!-- <a class="navbar-brand" href=" {% static 'home_cons/index.html' %} "><img
                             src=" {% static 'home_cons/images/logo.png' %} " class="logo" alt=""></a>-->
-                </div>
-                <!-- End Header Navigation -->
+          </div>
+          <!-- End Header Navigation -->
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="navbar-menu">
-                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="nav-item"><a class="nav-link" href=" {% url 'home_cons' %} ">Home</a>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href=" {% static 'home_cons/about.html' %} ">View
-                                Orders
-                            </a></li>
-                        <li class="dropdown active">
-                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
-                            <ul class="dropdown-menu">
-                                <li><a href=" {% static 'home_cons/shop.html' %} ">products</a></li>
-                                <li><a href=" {% static 'home_cons/shop-detail.html' %} ">Shop Detail</a></li>
-                                <li><a href=" {% static 'home_cons/cart.html' %} ">Cart</a></li>
-                                <li><a href=" {% static 'home_cons/checkout.html' %} ">Checkout</a></li>
-                                <li><a href=" {% static 'home_cons/my-account.html' %} ">My Account</a></li>
-                                <li><a href=" {% static 'home_cons/wishlist.html' %} ">Wishlist</a></li>
-                            </ul>
-                        </li>
-                        <!--<li class="nav-item"><a class="nav-link"
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="navbar-menu">
+            <ul
+              class="nav navbar-nav ml-auto"
+              data-in="fadeInDown"
+              data-out="fadeOutUp"
+            >
+              <li class="nav-item">
+                <a class="nav-link" href=" {% url 'home_cons' %} ">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href=" {% static 'home_cons/about.html' %} "
+                  >View Orders
+                </a>
+              </li>
+              <li class="dropdown active">
+                <a
+                  href="#"
+                  class="nav-link dropdown-toggle arrow"
+                  data-toggle="dropdown"
+                  >SHOP</a
+                >
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href=" {% static 'home_cons/shop.html' %} ">products</a>
+                  </li>
+                  <li>
+                    <a href=" {% static 'home_cons/shop-detail.html' %} "
+                      >Shop Detail</a
+                    >
+                  </li>
+                  <li>
+                    <a href=" {% static 'home_cons/cart.html' %} ">Cart</a>
+                  </li>
+                  <li>
+                    <a href=" {% static 'home_cons/checkout.html' %} "
+                      >Checkout</a
+                    >
+                  </li>
+                  <li>
+                    <a href=" {% static 'home_cons/my-account.html' %} "
+                      >My Account</a
+                    >
+                  </li>
+                  <li>
+                    <a href=" {% static 'home_cons/wishlist.html' %} "
+                      >Wishlist</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <!--<li class="nav-item"><a class="nav-link"
                                 href=" {% static 'home_cons/gallery.html' %} ">Gallery</a></li>
                         <li class="nav-item"><a class="nav-link"
                                 href=" {% static 'home_cons/contact-us.html' %} ">Contact Us</a></li>-->
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
+            </ul>
+          </div>
+          <!-- /.navbar-collapse -->
 
-                <!-- Start Atribute Navigation -->
-                <div class="attr-nav">
-                    <ul>
-                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                        <li class="side-menu"><a href="#">
-                                <i class="fa fa-shopping-bag"></i>
-                                <span class="badge" id="badgecount"></span>
-                                <p>My Bag</p>
-                            </a></li>
-                    </ul>
-                </div>
-                <!-- End Atribute Navigation -->
-            </div>
-            <!-- Start Side Menu -->
-            <div class="side">
-                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                <li class="cart-box">
-                    <ul class="cart-list" id="cart-item">
-                        <li class="total">
-                            <a href="javascript:addToCart()" class="btn btn-default hvr-hover btn-cart">ADD TO CART</a>
-                            <span class="float-right"><strong>Total : </strong><span id="totalamt"></span></span>
-                        </li>
-                    </ul>
-                </li>
-            </div>
-            <!-- End Side Menu -->
-        </nav>
-        <!-- End Navigation -->
+          <!-- Start Atribute Navigation -->
+          <div class="attr-nav">
+            <ul>
+              <li class="search">
+                <a href="#"><i class="fa fa-search"></i></a>
+              </li>
+              <li class="side-menu">
+                <a href="#">
+                  <i class="fa fa-shopping-bag"></i>
+                  <span class="badge" id="badgecount"></span>
+                  <p>My Bag</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- End Atribute Navigation -->
+        </div>
+        <!-- Start Side Menu -->
+        <div class="side">
+          <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+          <li class="cart-box">
+            <ul class="cart-list" id="cart-item">
+              <li class="total">
+                <a
+                  href="javascript:addToCart()"
+                  class="btn btn-default hvr-hover btn-cart"
+                  >ADD TO CART</a
+                >
+                <span class="float-right"
+                  ><strong>Total : </strong><span id="totalamt"></span
+                ></span>
+              </li>
+            </ul>
+          </li>
+        </div>
+        <!-- End Side Menu -->
+      </nav>
+      <!-- End Navigation -->
     </header>
     <!-- End Main Top -->
 
     <!-- Start Top Search -->
     <div class="top-search">
-        <div class="container">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                <input type="text" class="form-control" placeholder="Search">
-                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-            </div>
-        </div>
+      <div class="container">
+        <form action="" method="get">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search"
+              name="q"
+            />
+            <span class="input-group-addon close-search"
+              ><i class="fa fa-times"></i
+            ></span>
+          </div>
+        </form>
+      </div>
     </div>
     <!-- End Top Search -->
 
     <!-- Start All Title Box -->
     <div class="all-title-box">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>Shop</h2>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Shop</li>
-                    </ul>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <h2>Shop</h2>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Shop</li>
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
     <!-- End All Title Box -->
 
     <!-- Start Shop Page  -->
     <div class="shop-box-inner">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
-                    <div class="right-product-box">
-                        <div class="product-item-filter row">
-                            <div class="col-12 col-sm-8 text-center text-sm-left">
-                                <div class="toolbar-sorter-right">
-                                    <span>Sort by </span>
-                                    <select id="basic" class="selectpicker show-tick form-control"
-                                        data-placeholder="$ USD">
-                                        <option data-display="Select">Nothing</option>
-                                        <option value="1">Popularity</option>
-                                        <option value="2">High Price → High Price</option>
-                                        <option value="3">Low Price → High Price</option>
-                                        <option value="4">Best Selling</option>
-                                    </select>
-                                </div>
-                                <p>Showing all results</p>
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
+            <div class="right-product-box">
+              <div class="product-categorie-box">
+                <div class="tab-content">
+                  <div
+                    role="tabpanel"
+                    class="tab-pane fade show active"
+                    id="grid-view"
+                  >
+                    <div class="row">
+                      {% for prod in products %}
+                      <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                        <div class="products-single fix">
+                          <div class="box-img-hover">
+                            <img
+                              src=" media/{{ prod.image }} "
+                              class="img-fluid"
+                              alt="Image"
+                            />
+                            <div class="mask-icon">
+                              <ul>
+                                <li>
+                                  <a
+                                    href="#"
+                                    data-toggle="tooltip"
+                                    data-placement="right"
+                                    title="Add to Wishlist"
+                                    ><i class="far fa-heart"></i
+                                  ></a>
+                                </li>
+                              </ul>
+                              <a
+                                class="cart"
+                                href="javascript:addItem({{ prod.id }}, '{{ prod.name }}', {{ prod.price }}, 'media/{{ prod.image }}')"
+                                >Add to Cart</a
+                              >
                             </div>
+                          </div>
+                          <div class="why-text">
+                            <h4>{{ prod.name }}</h4>
+                            <h5>₹ {{ prod.price }}</h5>
+                          </div>
                         </div>
-                        <div class="product-categorie-box">
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
-                                    <div class="row">
-                                        {% for prod in products %}
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <img src=" media/{{ prod.image }} " class="img-fluid" alt="Image">
-                                                    <div class="mask-icon">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right"
-                                                                    title="Add to Wishlist"><i
-                                                                        class="far fa-heart"></i></a></li>
-                                                        </ul>
-                                                        <a class="cart"
-                                                            href="javascript:addItem({{ prod.id }}, '{{ prod.name }}', {{ prod.price }}, 'media/{{ prod.image }}')">Add
-                                                            to
-                                                            Cart</a>
-                                                    </div>
-                                                </div>
-                                                <div class="why-text">
-                                                    <h4>{{ prod.name }}</h4>
-                                                    <h5> ₹ {{ prod.price }}</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="list-view">
-
-                                </div>
-                            </div>
-                        </div>
+                      </div>
+                      {% endfor %}
                     </div>
+                  </div>
+                  <div
+                    role="tabpanel"
+                    class="tab-pane fade"
+                    id="list-view"
+                  ></div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
-                    <div class="product-categori">
-                        <div class="search-product">
-                            <form action="#">
-                                <input class="form-control" placeholder="Search here..." type="text">
-                                <button type="submit"> <i class="fa fa-search"></i> </button>
-                            </form>
-                        </div>
-                        <!--<div class="filter-sidebar-left">
-                            <div class="title-left">
-                                <h3>Categories</h3>
-                            </div>
-                            <div class="list-group list-group-collapse list-group-sm list-group-tree"
-                                id="list-group-men" data-children=".sub-men">
-                                <div class="list-group-collapse sub-men">
-                                    <a class="list-group-item list-group-item-action" href="#sub-men1"
-                                        data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">Fruits &
-                                        Drinks <small class="text-muted">(100)</small>
-                                    </a>
-                                    <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
-                                        <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action active">Fruits 1
-                                                <small class="text-muted">(50)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">Fruits 2 <small
-                                                    class="text-muted">(10)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">Fruits 3 <small
-                                                    class="text-muted">(10)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">Fruits 4 <small
-                                                    class="text-muted">(10)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">Fruits 5 <small
-                                                    class="text-muted">(20)</small></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-group-collapse sub-men">
-                                    <a class="list-group-item list-group-item-action" href="#sub-men2"
-                                        data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">Vegetables
-                                        <small class="text-muted">(50)</small>
-                                    </a>
-                                    <div class="collapse" id="sub-men2" data-parent="#list-group-men">
-                                        <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action">Vegetables 1
-                                                <small class="text-muted">(10)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">Vegetables 2
-                                                <small class="text-muted">(20)</small></a>
-                                            <a href="#" class="list-group-item list-group-item-action">Vegetables 3
-                                                <small class="text-muted">(20)</small></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#" class="list-group-item list-group-item-action"> Grocery <small
-                                        class="text-muted">(150) </small></a>
-                                <a href="#" class="list-group-item list-group-item-action"> Grocery <small
-                                        class="text-muted">(11)</small></a>
-                                <a href="#" class="list-group-item list-group-item-action"> Grocery <small
-                                        class="text-muted">(22)</small></a>
-                            </div>
-                        </div>
-                        <div class="filter-price-left">
-                            <div class="title-left">
-                                <h3>Price</h3>
-                            </div>
-                            <div class="price-box-slider">
-                                <div id="slider-range"></div>
-                                <p>
-                                    <input type="text" id="amount" readonly
-                                        style="border:0; color:#fbb714; font-weight:bold;">
-                                    <button class="btn hvr-hover" type="submit">Filter</button>
-                                </p>
-                            </div>
-                        </div>-->
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
+            <div class="product-categori">
+              <div class="search-product">
+                <form action="" method="get">
+                  <input
+                    class="form-control"
+                    placeholder="Search here..."
+                    type="text"
+                    name="q"
+                  />
+                  <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+              </div>
+              <div class="filter-sidebar-left">
+                <div class="title-left">
+                  <h3>Categories</h3>
+                </div>
+                <div
+                  class="list-group list-group-collapse list-group-sm list-group-tree"
+                  id="list-group-men"
+                  data-children=".sub-men"
+                >
+                <a href="http://127.0.0.1:8000/shop" class="list-group-item list-group-item-action">
+                  All <small class="text-muted">{{ total }} </small></a
+                >
+                {% for cat in categories %}
+                <a href="http://127.0.0.1:8000/shop?category={{ cat.category }}" class="list-group-item list-group-item-action">
+                  {{ cat.category }} <small class="text-muted">{{cat.total}} </small></a
+                >
+                {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
     <!-- End Shop Page -->
 
     <!-- Start Instagram Feed  -->
     <div class="instagram-box">
-        <div class="main-instagram owl-carousel owl-theme">
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src=" {% static 'home_cons/images/instagram-img-01.jpg' %} " alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
+      <div class="main-instagram owl-carousel owl-theme">
+        <div class="item">
+          <div class="ins-inner-box">
+            <img
+              src=" {% static 'home_cons/images/instagram-img-01.jpg' %} "
+              alt=""
+            />
+            <div class="hov-in">
+              <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src=" {% static 'home_cons/images/instagram-img-02.jpg' %} " alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src=" {% static 'home_cons/images/instagram-img-03.jpg' %} " alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src=" {% static 'home_cons/images/instagram-img-04.jpg' %} " alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src=" {% static 'home_cons/images/instagram-img-05.jpg' %} " alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src=" {% static 'home_cons/images/instagram-img-06.jpg' %} " alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src=" {% static 'home_cons/images/instagram-img-07.jpg' %} " alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src=" {% static 'home_cons/images/instagram-img-08.jpg' %} " alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src=" {% static 'home_cons/images/instagram-img-09.jpg' %} " alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src=" {% static 'home_cons/images/instagram-img-05.jpg' %} " alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="item">
+          <div class="ins-inner-box">
+            <img
+              src=" {% static 'home_cons/images/instagram-img-02.jpg' %} "
+              alt=""
+            />
+            <div class="hov-in">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ins-inner-box">
+            <img
+              src=" {% static 'home_cons/images/instagram-img-03.jpg' %} "
+              alt=""
+            />
+            <div class="hov-in">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ins-inner-box">
+            <img
+              src=" {% static 'home_cons/images/instagram-img-04.jpg' %} "
+              alt=""
+            />
+            <div class="hov-in">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ins-inner-box">
+            <img
+              src=" {% static 'home_cons/images/instagram-img-05.jpg' %} "
+              alt=""
+            />
+            <div class="hov-in">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ins-inner-box">
+            <img
+              src=" {% static 'home_cons/images/instagram-img-06.jpg' %} "
+              alt=""
+            />
+            <div class="hov-in">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ins-inner-box">
+            <img
+              src=" {% static 'home_cons/images/instagram-img-07.jpg' %} "
+              alt=""
+            />
+            <div class="hov-in">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ins-inner-box">
+            <img
+              src=" {% static 'home_cons/images/instagram-img-08.jpg' %} "
+              alt=""
+            />
+            <div class="hov-in">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ins-inner-box">
+            <img
+              src=" {% static 'home_cons/images/instagram-img-09.jpg' %} "
+              alt=""
+            />
+            <div class="hov-in">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ins-inner-box">
+            <img
+              src=" {% static 'home_cons/images/instagram-img-05.jpg' %} "
+              alt=""
+            />
+            <div class="hov-in">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- End Instagram Feed  -->
-
 
     <!-- Start Footer  -->
     <!---
@@ -466,88 +531,99 @@
 
     <!-- Start copyright  -->
     <div class="footer-copyright">
-        <p class="footer-company">All Rights Reserved. &copy; 2018 <a href="#">ThewayShop</a> Design By :
-            <a href="https://html.design/">html design</a>
-        </p>
+      <p class="footer-company">
+        All Rights Reserved. &copy; 2018 <a href="#">ThewayShop</a> Design By :
+        <a href="https://html.design/">html design</a>
+      </p>
     </div>
     <!-- End copyright  -->
 
-    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+    <a href="#" id="back-to-top" title="Back to top" style="display: none"
+      >&uarr;</a
+    >
 
     <form action="/add-to-cart" method="post" id="submitCart">
-        {% csrf_token %}
+      {% csrf_token %}
     </form>
 
     <script>
+      var mydata = [];
+      total = 0;
+      badgeCount = 0;
+      document.getElementById("badgecount").innerHTML = badgeCount;
+      const frm = document.getElementById("submitCart");
 
-        var mydata = []
-        total = 0
-        badgeCount = 0
-        document.getElementById("badgecount").innerHTML = badgeCount;
-        const frm = document.getElementById("submitCart");
+      function addItem(id, name, price, image) {
+        total += price;
+        document.getElementById("totalamt").innerHTML = total;
 
-        function addItem(id, name, price, image) {
-            total += price;
-            document.getElementById("totalamt").innerHTML = total;
-
-            if (mydata.includes(id)) {
-                document.getElementById(id).innerHTML = Number(document.getElementById(id).innerHTML) + 1;
-                vlr = document.getElementById(`frm${id}`).value
-                cnt = vlr.split(',')
-                document.getElementById(`frm${id}`).value = `${cnt[0]},${Number(cnt[1]) + 1}`;
-                console.log(document.getElementById(`frm${id}`).value)
-            } else {
-                badgeCount++;
-                document.getElementById("badgecount").innerHTML = badgeCount;
-                const list = document.getElementById("cart-item");
-                list.innerHTML += `<li id="total${id}">
+        if (mydata.includes(id)) {
+          document.getElementById(id).innerHTML =
+            Number(document.getElementById(id).innerHTML) + 1;
+          vlr = document.getElementById(`frm${id}`).value;
+          cnt = vlr.split(",");
+          document.getElementById(`frm${id}`).value = `${cnt[0]},${
+            Number(cnt[1]) + 1
+          }`;
+          console.log(document.getElementById(`frm${id}`).value);
+        } else {
+          badgeCount++;
+          document.getElementById("badgecount").innerHTML = badgeCount;
+          const list = document.getElementById("cart-item");
+          list.innerHTML += `<li id="total${id}">
                             <a href="#" class="photo"><img src="${image}"
                                     class="cart-thumb" alt="" /></a>
                             <h6><a href="#">${name}</a></h6>
                             <p><span id = "${id}">1</span> - <span class="price">${price}</span></p>
                             <a href="javascript:plusClicked(${id}, ${price})"><i class="fa-solid fa-plus" style= "margin-right : 10px"></i></a>
                             <a href="javascript:minusClicked(${id}, ${price})"><i class="fa-solid fa-minus" style = "margin-left : 10px"></i></a>
-                        </li>`
-                frm.innerHTML += `<input type="hidden" name="items" id="frm${id}" value="${id},1">`
-                mydata.push(id);
-            }
+                        </li>`;
+          frm.innerHTML += `<input type="hidden" name="items" id="frm${id}" value="${id},1">`;
+          mydata.push(id);
         }
+      }
     </script>
     <script>
-        function minusClicked(id, price) {
-            total -= price;
-            document.getElementById("totalamt").innerHTML = total;
-            if (document.getElementById(id).innerHTML == '1') {
-                badgeCount--;
-                document.getElementById("badgecount").innerHTML = badgeCount;
-                document.getElementById(`total${id}`).remove();
-                document.getElementById(`frm${id}`).remove();
-                mydata = mydata.filter(function (value) {
-                    return value !== id;
-                });
-            } else {
-                document.getElementById(id).innerHTML = Number(document.getElementById(id).innerHTML) - 1;
-                vlr = document.getElementById(`frm${id}`).value
-                cnt = vlr.split(',')
-                document.getElementById(`frm${id}`).value = `${cnt[0]},${Number(cnt[1]) - 1}`;
-                console.log(document.getElementById(`frm${id}`).value)
-            }
+      function minusClicked(id, price) {
+        total -= price;
+        document.getElementById("totalamt").innerHTML = total;
+        if (document.getElementById(id).innerHTML == "1") {
+          badgeCount--;
+          document.getElementById("badgecount").innerHTML = badgeCount;
+          document.getElementById(`total${id}`).remove();
+          document.getElementById(`frm${id}`).remove();
+          mydata = mydata.filter(function (value) {
+            return value !== id;
+          });
+        } else {
+          document.getElementById(id).innerHTML =
+            Number(document.getElementById(id).innerHTML) - 1;
+          vlr = document.getElementById(`frm${id}`).value;
+          cnt = vlr.split(",");
+          document.getElementById(`frm${id}`).value = `${cnt[0]},${
+            Number(cnt[1]) - 1
+          }`;
+          console.log(document.getElementById(`frm${id}`).value);
         }
+      }
 
-        function plusClicked(id, price) {
-            total += price;
-            document.getElementById("totalamt").innerHTML = total;
-            document.getElementById(id).innerHTML = Number(document.getElementById(id).innerHTML) + 1;
-            vlr = document.getElementById(`frm${id}`).value
-            cnt = vlr.split(',')
-            document.getElementById(`frm${id}`).value = `${cnt[0]},${Number(cnt[1]) + 1}`;
-            console.log(document.getElementById(`frm${id}`).value)
-        }
+      function plusClicked(id, price) {
+        total += price;
+        document.getElementById("totalamt").innerHTML = total;
+        document.getElementById(id).innerHTML =
+          Number(document.getElementById(id).innerHTML) + 1;
+        vlr = document.getElementById(`frm${id}`).value;
+        cnt = vlr.split(",");
+        document.getElementById(`frm${id}`).value = `${cnt[0]},${
+          Number(cnt[1]) + 1
+        }`;
+        console.log(document.getElementById(`frm${id}`).value);
+      }
     </script>
     <script>
-        function addToCart() {
-            frm.submit();
-        }
+      function addToCart() {
+        frm.submit();
+      }
     </script>
     <!-- ALL JS FILES -->
     <script src=" {% static 'home_cons/js/jquery-3.2.1.min.js' %} "></script>
@@ -567,6 +643,5 @@
     <script src=" {% static 'home_cons/js/form-validator.min.js' %} "></script>
     <script src=" {% static 'home_cons/js/contact-form-script.js' %} "></script>
     <script src=" {% static 'home_cons/js/custom.js' %} "></script>
-</body>
-
+  </body>
 </html>

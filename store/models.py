@@ -23,3 +23,14 @@ class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    totalamount = models.IntegerField(default=0)
+    created = models.DateTimeField(auto_now_add=True)
+
+class OrderItems(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    amount = models.IntegerField()
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)

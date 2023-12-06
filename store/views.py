@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import User, Cart
+from .models import User, Cart, Order, OrderItems
 from store.models import Product
 from time import time
 from django.core.files.storage import FileSystemStorage
 import os
+from django.db.models import Count, Q
 
 # Create your views here.
 
@@ -63,18 +64,35 @@ def signup_login(request):
     return render(request,'signup_login.html')
 
 def shop(request):
-    products = Product.objects.all()
-    print(type(products))
-    data = {'products' : products}
+    q = request.GET.get("q")
+    category = request.GET.get("category")
+    print(category)
+    if category != None:
+        products = Product.objects.filter(category = category)
+    else:
+        if q == None:
+            q = ''
+        products = Product.objects.filter(name__icontains = q)
+    categories = Product.objects.all().values("category").annotate(total = Count("category"))
+    total = Product.objects.all().count
+    data = {'products' : products, 'categories' :categories, 'total' : total}
     return render(request,'shop.html', data)
 
 def addToCart(request):
     items = request.POST.getlist("items")
     for i in items:
-        item, quantity = i.split(',')[0], i.split(',')[1]
-        cart = Cart(user = User.objects.filter(email = request.session['email'])[0], product = Product.objects.filter(id = item)[0], quantity = int(quantity))
-        cart.save()
-    return HttpResponse("Cart Saved")
+        item, itemquantity = i.split(',')[0], i.split(',')[1]
+        obj = Cart.objects.filter(user = User.objects.filter(email = request.session['email'])[0], product = Product.objects.filter(id = item)[0])
+        if obj.exists():
+            print()
+            new_obj = obj[0]
+            qnty = new_obj.quantity
+            new_obj.quantity = qnty+int(itemquantity)
+            new_obj.save()
+        else:
+            cart = Cart(user = User.objects.filter(email = request.session['email'])[0], product = Product.objects.filter(id = item)[0], quantity = int(itemquantity))
+            cart.save()
+    return redirect('/cart')
 
 def signup(request):
     email = request.POST['email']
@@ -113,3 +131,51 @@ def logout(request):
     except:
         pass
     return redirect("/")
+
+def viewCart(request):
+    user = User.objects.filter(email = request.session['email'])[0]
+    cart_item = Cart.objects.filter(user = user)
+    total = 0
+    for i in cart_item:
+        total += i.quantity * int(i.product.price)
+    items = {"items" : cart_item, 'total' : total}
+    return render(request, 'consumer/cart.html', items)
+
+def updatecart(request):
+    products = request.POST.getlist("product")
+    count = request.POST.getlist("count")
+    user = User.objects.get(email = request.session['email'])
+    print(products)
+    for i, j in enumerate(products):
+        product = Product.objects.get(id=j)
+        cart = Cart.objects.get(Q(user=user) & Q(product = product))
+        cart.quantity = count[i]
+        cart.save()
+    return redirect('cart')
+
+def removeItem(request):
+    item = request.GET.get('item')
+    user = User.objects.get(email = request.session['email'])
+    product = Product.objects.get(id=item)
+    cart = Cart.objects.get(Q(user=user) & Q(product = product))
+    cart.delete()
+    return redirect('cart')
+
+def placeOrder(request):
+    user = User.objects.get(email = request.session['email'])
+    products = {}
+    items = Cart.objects.filter(user = user)
+    total = 0
+    newOrder = Order(user = user)
+    newOrder.save()
+    for i in items:
+        product = i.product
+        quantity = i.quantity
+        amount = i.product.price
+        orderitem = OrderItems(product = product, quantity=quantity, amount=amount, order = newOrder)
+        orderitem.save()
+        total+=i.quantity*int(i.product.price)
+    newOrder.totalamount = total
+    newOrder.save()
+    items.delete()
+    return redirect('shop')
