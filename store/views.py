@@ -6,6 +6,7 @@ from time import time
 from django.core.files.storage import FileSystemStorage
 import os
 from django.db.models import Count, Q
+from datetime import date, timedelta
 
 # Create your views here.
 
@@ -59,6 +60,11 @@ def deleteitem(request, id):
     if item:
         item.delete()
     return redirect('home_farmer')
+def deleteitemAdmin(request, id):
+    item = Product.objects.filter(id = id)
+    if item:
+        item.delete()
+    return redirect('home_admin')
 
 def signup_login(request):
     return render(request,'signup_login.html')
@@ -111,7 +117,8 @@ def login(request):
     email = request.POST['loginmail']
     passwd = request.POST['loginpass']
     if email == "admin@gmail.com" and passwd == "admin":
-        return redirect("/admin")
+        request.session['email'] = email
+        return redirect("home_admin")
     user = User.objects.filter(email = email)
     if user:
         if User.objects.filter(email = email, passwd = passwd):
@@ -138,7 +145,7 @@ def viewCart(request):
     total = 0
     for i in cart_item:
         total += i.quantity * int(i.product.price)
-    items = {"items" : cart_item, 'total' : total}
+    items = {"items" : cart_item, 'total' : total, 'user' : user}
     return render(request, 'consumer/cart.html', items)
 
 def updatecart(request):
@@ -179,3 +186,117 @@ def placeOrder(request):
     newOrder.save()
     items.delete()
     return redirect('shop')
+
+def changeFarmerPassword(request):
+    user = User.objects.get(email = request.session['email'])
+    data = {'user' : user}
+    if request.method == 'POST':
+        user.passwd = request.POST.get("password")
+        user.save()
+    return render(request, 'farmer/home/changePassword.html', data)
+
+def viewOrders(request):
+    user = User.objects.get(email = request.session['email'])
+    orders = OrderItems.objects.filter(product__manufacturer = request.session['email'])
+    data = {'user' : user, 'orders' : orders}
+    print(orders)
+    return render(request, 'farmer/home/orders.html', data)
+
+def orderSended(request):
+    order = request.GET.get('orderid')
+    orderObject = OrderItems.objects.get(id=order)
+    orderObject.packed = True
+    orderObject.save()
+    return redirect('view-orders')
+
+def statistics(request):
+    user = User.objects.get(email = request.session['email'])
+    # today = date.today()
+    today = OrderItems.objects.filter(product__manufacturer = request.session['email'], order__created = date.today())
+    print(today)
+    amt = 0
+    for i in today:
+        amt+=i.amount
+    todayData = {'orders' : today.count, 'amount' : amt}
+    amt = 0
+    start = date.today().replace(day=1)
+    month = OrderItems.objects.filter(product__manufacturer = request.session['email'],order__created__gte = start, order__created__lte = date.today())
+    # print(month)
+    for i in month:
+        amt+=i.amount
+    monthData = {'orders' : month.count, 'amount' : amt}
+    amt = 0
+    start = date.today() - timedelta(days=7)
+    week = OrderItems.objects.filter(product__manufacturer = request.session['email'],order__created__gte = start, order__created__lte = date.today())
+    for i in week:
+        amt+=i.amount
+    weekData = {'orders' : week.count, 'amount' : amt}
+    data = {'user' : user, 'today' : todayData, 'month' : monthData, 'week' : weekData}
+    return render(request, 'farmer/home/statistics.html', data)
+
+def consumerOrders(request):
+    orders = Order.objects.filter(user = request.session['email'])
+    data = {'orders' : orders, 'day' : date.today() - timedelta(days=1)}
+    return render(request, 'consumer/view-orders.html', data)
+
+def cancelConsumerOrder(request):
+    id = request.GET.get("id")
+    order = Order.objects.get(id = id)
+    order.delete()
+    return redirect('/consumer-orders')
+
+def profile(request):
+    data ={}
+    return render(request, 'consumer/my-account.html', data)
+
+def address(request):
+    user = User.objects.get(email = request.session['email'])
+    data = {'present' : user.address}
+    if request.method == 'POST':
+        address = request.POST.get('address')
+        if len(address) < 20:
+            data['warning'] = "Please Write a Address More Specific"
+            return render(request, 'consumer/address.html', data)
+        user.address = address
+        user.save()
+        return('home_cons')
+    return render(request, 'consumer/address.html', data)
+
+def editCredentials(request):
+    user = User.objects.get(email = request.session['email'])
+    data = {'user' : user}
+    if request.method == "POST":
+        name = request.POST.get("name")
+        phone = request.POST.get("phone")
+        password = request.POST.get("password")
+        user.name = name
+        user.phone = phone
+        user.passwd = password
+        user.save()
+        return redirect('/profile')
+    return render(request, 'consumer/edit-credentials.html', data)
+
+def editProduct(request):
+    id = request.GET.get("id")
+    product = Product.objects.get(id = id)
+    data = {'product' : product}
+    if request.method == 'POST':
+        product_name = request.POST.get('product_name')
+        product_price = request.POST.get('product_price')
+        product_image = request.FILES.get('product-image')
+        product_category = request.POST.get('category')
+        product_date = request.POST.get('man-date')
+        product.name = product_name
+        product.price = product_price
+        if product_image != None:
+            product.image = product_image
+        product.category = product_category
+        product.production_date = product_date
+        product.save()
+        return redirect('home_farmer')
+    return render(request, 'farmer/home/edit_product.html', data)
+
+def adminIndex(request):
+    products = Product.objects.all()
+    data = {"products" : products}
+    return render(request, 'admin/index.html', data)

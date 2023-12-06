@@ -8,6 +8,7 @@ class User(models.Model):
     userType = models.CharField(max_length=20)
     phone = models.CharField(max_length=10)
     name = models.CharField(max_length=50)
+    address = models.TextField(null=True)
 
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
@@ -27,10 +28,17 @@ class Cart(models.Model):
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     totalamount = models.IntegerField(default=0)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateField(auto_now=True)
+
+    class Meta:
+        ordering = ["-created"]
 
 class OrderItems(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
     amount = models.IntegerField()
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    packed = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["packed","order"]

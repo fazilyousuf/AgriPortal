@@ -176,6 +176,7 @@
                 id="name"
                 name="product_name"
                 class="inputdes"
+                value="{{ product.name }}"
                 required
               /><br />
             </div>
@@ -187,21 +188,11 @@
                 id="price"
                 name="product_price"
                 class="inputdes"
+                value="{{ product.price }}"
                 required
               /><br />
             </div>
 
-            <div class="labeldes">
-              <label for="quantitypdate" class="labeldes">Quantity : </label
-              ><br />
-              <input
-                type="number"
-                id="quantitypdate"
-                name="product_quantity"
-                class="inputdes"
-                required
-              /><br />
-            </div>
 
             <div class="labeldes">
               <label for="category" class="labeldes">Category : </label><br />
@@ -221,6 +212,7 @@
                 id="pdate"
                 name="man-date"
                 class="inputdes"
+                value="{{ product.production_date }}"
                 required
               /><br />
             </div>
@@ -233,7 +225,6 @@
                 id="image"
                 name="product-image"
                 style="color: #f3f6fd; margin-bottom: 30px"
-                required
               /><br />
             </div>
             <input

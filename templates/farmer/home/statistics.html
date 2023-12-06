@@ -54,8 +54,8 @@
               <span>Products</span>
             </a>
           </li>
-          <li class="sidebar-list-item active">
-            <a href="#">
+          <li class="sidebar-list-item">
+            <a href="/add_products">
               <svg
                 width="18"
                 height="18"
@@ -91,7 +91,7 @@
               <span>Orders</span>
             </a>
           </li>
-          <li class="sidebar-list-item">
+          <li class="sidebar-list-item active">
             <a href="statistics">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +145,7 @@
       </div>
       <div class="app-content">
         <div class="app-content-header">
-          <h1 class="app-content-headerText">Add Products</h1>
+          <h1 class="app-content-headerText">Statistics</h1>
           <button class="mode-switch" title="Switch Theme">
             <svg
               class="moon"
@@ -162,87 +162,22 @@
               <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
             </svg>
           </button>
-          <a href="/home_farmer" class="app-content-headerButton"
-            >Go To Product</a
-          >
         </div>
         <div class="container">
-          <form action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="labeldes">
-              <label for="name" class="labeldes">Product Name : </label><br />
-              <input
-                type="text"
-                id="name"
-                name="product_name"
-                class="inputdes"
-                required
-              /><br />
-            </div>
+          <h1 style="color: white">Today</h1>
+          <hr />
+          <p style="color: white">Total Orders : {{ today.orders }}</p>
+          <p style="color: white">Total Amount : ₹{{ today.amount }}</p>
 
-            <div class="labeldes">
-              <label for="price" class="labeldes">Price : </label><br />
-              <input
-                type="number"
-                id="price"
-                name="product_price"
-                class="inputdes"
-                required
-              /><br />
-            </div>
+          <h1 style="margin-top: 50px; color: white">Last 7 Days</h1>
+          <hr />
+          <p style="color: white">Total Orders : {{ week.orders }}</p>
+          <p style="color: white">Total Amount : ₹{{ week.amount }}</p>
 
-            <div class="labeldes">
-              <label for="quantitypdate" class="labeldes">Quantity : </label
-              ><br />
-              <input
-                type="number"
-                id="quantitypdate"
-                name="product_quantity"
-                class="inputdes"
-                required
-              /><br />
-            </div>
-
-            <div class="labeldes">
-              <label for="category" class="labeldes">Category : </label><br />
-              <select name="category" id="category" class="inputdes">
-                <option value="Fruits">Fruits</option>
-                <option value="Vegetables">Vegetables</option>
-                <option value="Grains">Grains</option>
-                <option value="Others">Others</option>
-              </select>
-            </div>
-
-            <div class="labeldes">
-              <label for="pdate" class="labeldes">Production Date : </label
-              ><br />
-              <input
-                type="date"
-                id="pdate"
-                name="man-date"
-                class="inputdes"
-                required
-              /><br />
-            </div>
-
-            <div class="labeldes">
-              <label for="image" class="labeldes">Image : </label><br />
-              <input
-                type="file"
-                accept="image/*"
-                id="image"
-                name="product-image"
-                style="color: #f3f6fd; margin-bottom: 30px"
-                required
-              /><br />
-            </div>
-            <input
-              type="submit"
-              value="Add Item"
-              class="app-content-headerButton"
-              style="margin-left: 125px"
-            />
-          </form>
+          <h1 style="margin-top: 50px; color: white">This Month</h1>
+          <hr />
+          <p style="color: white">Total Orders : {{ month.orders }}</p>
+          <p style="color: white">Total Amount : ₹{{ month.amount }}</p>
         </div>
       </div>
     </div>

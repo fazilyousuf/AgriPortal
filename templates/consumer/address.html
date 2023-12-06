@@ -113,49 +113,32 @@
     <!-- End Top Search -->
 
     <!-- Start Slider -->
-    <div id="slides-shop" class="cover-slides">
-        <ul class="slides-container">
-            <li class="text-center">
-                <img src=" {% static 'home_cons/images/banner-01.jpg' %} " alt="">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> Agriportal</strong></h1>
-                            <p class="m-b-40">Your gateway to thriving agriculture and sustainable living<br> "Harvesting the potential of agriculture, right at your fingertips.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
-                        </div>
+    <div class="container">
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="address" style="font-size: 20px;">Address : </label>
+                        {% if present %}
+                        <textarea class="form-control" id="address" name="address" rows="10" data-error="Write your message" required>{{ present }}</textarea>
+                        {% else %}
+                        <textarea class="form-control" id="address" name="address" rows="10" data-error="Write your message" required></textarea>
+                        {% endif %}
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="submit-button text-center">
+                        {% if present %}
+                        <button class="btn hvr-hover" id="submit" type="submit">Edit Address</button>
+                        {% else %}
+                        <button class="btn hvr-hover" id="submit" type="submit">Add Address</button>
+                        {% endif %}
+                        <div id="msgSubmit" class="h3 text-center hidden"></div>
+                        <div class="clearfix"></div>
                     </div>
                 </div>
-            </li>
-            <li class="text-center">
-                <img src=" {% static 'home_cons/images/banner-02.jpg' %} " alt="">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> Agriportal</strong></h1>
-                            <p class="m-b-40">Your gateway to thriving agriculture and sustainable living<br> "Harvesting the potential of agriculture, right at your fingertips.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="text-center">
-                <img src=" {% static 'home_cons/images/banner-03.jpg' %} " alt="">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> Agriportal</strong></h1>
-                            <p class="m-b-40">Your gateway to thriving agriculture and sustainable living<br> "Harvesting the potential of agriculture, right at your fingertips.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <div class="slides-navigation">
-            <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-            <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-        </div>
+            </div>
+        </form>
     </div>
     <!-- End Slider -->
 
@@ -575,6 +558,12 @@
     <!-- End copyright  -->
 
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+    {% if warning %}
+    <script>
+        alert("{{ warning }}")
+    </script>
+    {% endif %}
 
     <!-- ALL JS FILES -->
     <script src=" {% static 'home_cons/js/jquery-3.2.1.min.js' %} "></script>
